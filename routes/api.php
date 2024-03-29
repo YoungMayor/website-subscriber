@@ -3,6 +3,7 @@
 use App\Http\Controllers\API\AuthController;
 use App\Http\Controllers\API\PostController;
 use App\Http\Controllers\API\UserController;
+use App\Http\Controllers\API\WebsiteController;
 use Illuminate\Support\Facades\Route;
 
 Route::controller(AuthController::class)->prefix('auth')->group(function () {
@@ -21,5 +22,11 @@ Route::middleware(['auth:sanctum'])->group(function () {
         Route::get('/{post}', 'show');
         Route::put('/{post}', 'update');
         Route::delete('/{post}', 'destroy');
+    });
+
+    Route::controller(WebsiteController::class)->prefix('website')->group(function () {
+        Route::prefix('/{website}')->group(function () {
+            Route::post('/subscribe', 'subscribe');
+        });
     });
 });
