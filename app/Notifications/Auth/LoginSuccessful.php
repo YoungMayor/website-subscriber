@@ -9,7 +9,7 @@ use Illuminate\Notifications\Messages\MailMessage;
 use Illuminate\Notifications\Notification;
 use Laravel\Sanctum\PersonalAccessToken;
 
-class LoginSuccessful extends Notification
+class LoginSuccessful extends Notification implements ShouldQueue
 {
     use Queueable;
 
