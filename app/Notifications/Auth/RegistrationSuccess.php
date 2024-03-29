@@ -35,7 +35,7 @@ class RegistrationSuccess extends Notification
     public function toMail(object $notifiable): MailMessage
     {
         return (new MailMessage)
-            ->subject('New Successful Login on your account')
+            ->subject("Account created successfully")
             ->lines([
                 "Your account has been created successfully.",
             ]);
