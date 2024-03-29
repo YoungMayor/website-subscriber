@@ -2,12 +2,13 @@
 
 namespace App\Models;
 
+use App\Enums\PostStatus;
 use Illuminate\Database\Eloquent\Concerns\HasUlids;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 
-class Website extends Model
+class Post extends Model
 {
     use HasFactory, HasUlids;
 
@@ -19,11 +20,12 @@ class Website extends Model
     {
         return [
             'keywords' => 'array',
+            'status' => PostStatus::class
         ];
     }
 
-    public function user(): BelongsTo
+    public function website(): BelongsTo
     {
-        return $this->belongsTo(User::class);
+        return $this->belongsTo(Website::class);
     }
 }
