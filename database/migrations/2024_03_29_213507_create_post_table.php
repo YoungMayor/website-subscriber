@@ -14,11 +14,11 @@ return new class extends Migration
         Schema::create('posts', function (Blueprint $table) {
             $table->ulid()->primary();
             $table->foreignUlid('website_ulid')->constrained('websites', 'ulid');
+            $table->foreignUlid('author_ulid')->constrained('users', 'ulid');
             $table->string('title');
             $table->text('description');
             $table->string('slug');
             $table->json('keywords')->nullable();
-            $table->string('status')->default('draft')->comment('published, draft, suspended');
             $table->longText('content')->nullable();
             $table->timestamps();
         });

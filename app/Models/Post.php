@@ -20,12 +20,16 @@ class Post extends Model
     {
         return [
             'keywords' => 'array',
-            'status' => PostStatus::class
         ];
     }
 
     public function website(): BelongsTo
     {
         return $this->belongsTo(Website::class);
+    }
+
+    public function author(): BelongsTo
+    {
+        return $this->belongsTo(User::class);
     }
 }

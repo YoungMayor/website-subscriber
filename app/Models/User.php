@@ -52,6 +52,11 @@ class User extends Authenticatable
 
     public function websites(): HasMany
     {
-        return $this->hasMany(Website::class);
+        return $this->hasMany(Website::class, 'author_ulid');
+    }
+
+    public function posts(): HasMany
+    {
+        return $this->hasMany(Post::class, 'author_ulid');
     }
 }
